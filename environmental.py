@@ -223,11 +223,11 @@ def calculate_MPI_fields():
     lon=data.longitude.values
     lat=data.latitude.values
     data.close()
-    latlist=np.load(os.path.join(__location__,'LATLIST_INTERP.npy')).item()
-    lonlist=np.load(os.path.join(__location__,'LONLIST_INTERP.npy')).item()
-    monthlist=np.load(os.path.join(__location__,'MONTHLIST_INTERP.npy')).item()
-    basinlist=np.load(os.path.join(__location__,'BASINLIST_INTERP.npy')).item()
-    preslist=np.load(os.path.join(__location__,'PRESLIST_INTERP.npy')).item()
+    latlist=np.load(os.path.join(__location__,'LATLIST_INTERP.npy'),allow_pickle=True).item()
+    lonlist=np.load(os.path.join(__location__,'LONLIST_INTERP.npy'),allow_pickle=True).item()
+    monthlist=np.load(os.path.join(__location__,'MONTHLIST_INTERP.npy'),allow_pickle=True).item()
+    basinlist=np.load(os.path.join(__location__,'BASINLIST_INTERP.npy'),allow_pickle=True).item()
+    preslist=np.load(os.path.join(__location__,'PRESLIST_INTERP.npy'),allow_pickle=True).item()
 
     sst_list={i:[] for i in range(0,6)}
     month_list={i:[] for i in range(0,6)}
@@ -392,7 +392,7 @@ def pressure_coefficients():
     pres_variables=np.load(os.path.join(__location__,'TC_PRESSURE_VARIABLES.npy'),allow_pickle=True).item()
 
     coeflist={i:[] for i in range(0,6)}
-    
+
     months=[[6,7,8,9,10,11],[6,7,8,9,10,11],[4,5,6,10,10,11],[1,2,3,4,11,12],[1,2,3,4,11,12],[5,6,7,8,9,10,11]]
     
     months_for_coef=[[6,7,8,9,10,11],[6,7,8,9,10,11],[4,5,6,9,10,11],[1,2,3,4,11,12],[1,2,3,4,11,12],[5,6,7,8,9,10,11]]
