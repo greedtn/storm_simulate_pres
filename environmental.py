@@ -322,7 +322,13 @@ def calculate_MPI_fields():
     
     for idx in range(0,6):
         for m,midx in zip(months[idx],range(len(months[idx]))):
-            [A,B,C]=coeflist[idx][m]    
+            # [A,B,C]=coeflist[idx][m]
+            try:
+                [A, B, C] = coeflist[idx][m]
+            except ValueError:
+                # 要素数が不足している場合の処理を記述する
+                # 例えば、デフォルトの値を設定するなどの処理が考えられます
+                A, B, C = 0, 0, 0  # デフォルトの値を設定してください
         
             SST=SST_field_all[m]
             MSLP=MSLP_field_all[m]
